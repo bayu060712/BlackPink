@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLACKPINK - Official Website</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --bp-pink: #ff4d94;
+            --bp-dark-pink: #d81b60;
+            --bp-black: #000000;
+            --bp-dark-gray: #1a1a1a;
+            --bp-light: #ffffff;
+            --bp-gold: #ffd700;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--bp-black);
+            color: var(--bp-light);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bp-black);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--bp-pink);
+            border-radius: 5px;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: rgba(0, 0, 0, 0.2) !important;
+            backdrop-filter: blur(15px);
+            padding: 15px 0;
+            transition: all 0.4s ease;
+            border-bottom: 1px solid rgba(255, 77, 148, 0.2);
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: rgba(0, 0, 0, 0.95) !important;
+        }
+        
+        .navbar-brand {
+            font-weight: 900;
+            font-size: 2rem;
+            background: linear-gradient(45deg, var(--bp-pink), var(--bp-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+        
+        .nav-link {
+            color: var(--bp-light) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--bp-pink) !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--bp-pink);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), 
+                        url('https://4kwallpapers.com/images/walls/thumbs_3t/23197.jpeg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--bp-pink), var(--bp-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .btn-bp {
+            background: linear-gradient(45deg, var(--bp-pink), var(--bp-dark-pink));
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 77, 148, 0.3);
+        }
+        
+        .btn-bp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 77, 148, 0.5);
+            color: white;
+        }
+        
+        .btn-outline-bp {
+            border: 2px solid var(--bp-pink);
+            color: var(--bp-pink);
+            background: transparent;
+            padding: 10px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-bp:hover {
+            background: var(--bp-pink);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Section Styling */
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            text-transform: uppercase;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--bp-pink), var(--bp-gold));
+            border-radius: 2px;
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 100px 0;
+            background: var(--bp-dark-gray);
+            position: relative;
+        }
+        
+        .about-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 77, 148, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Members Section */
+        .members-section {
+            padding: 100px 0;
+            background: var(--bp-black);
+        }
+        
+        .member-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            height: 100%;
+        }
+        
+        .member-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 30px rgba(255, 77, 148, 0.2);
+            border-color: rgba(255, 77, 148, 0.3);
+        }
+        
+        .member-img {
+            height: 400px;
+            object-fit: cover;
+            width: 100%;
+            transition: all 0.5s ease;
+        }
+        
+        .member-card:hover .member-img {
+            transform: scale(1.05);
+        }
+        
+        .member-info {
+            padding: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .member-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--bp-pink);
+        }
+        
+        .member-role {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+        }
+        
+        /* Music Section */
+        .music-section {
+            padding: 100px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)), 
+                        url('https://4kwallpapers.com/images/walls/thumbs_3t/23197.jpeg') no-repeat center center/cover;
+        }
+        
+        .album-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
+        }
+        
+        .album-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(255, 77, 148, 0.3);
+        }
+        
+        .album-img {
+            height: 300px;
+            object-fit: cover;
+            width: 100%;
+        }
+        
+        .album-info {
+            padding: 20px;
+        }
+        
+        .album-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--bp-pink);
+        }
+        
+        /* Tour Section */
+        .tour-section {
+            padding: 100px 0;
+            background: var(--bp-dark-gray);
+        }
+        
+        .tour-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--bp-pink);
+            transition: all 0.3s ease;
+        }
+        
+        .tour-card:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 0;
+            background: var(--bp-black);
+        }
+        
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bp-pink);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-icon:hover {
+            background: var(--bp-pink);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 77, 148, 0.4);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--bp-dark-gray);
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 77, 148, 0.2);
+        }
+        
+        /* Particle Background */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .member-img {
+                height: 300px;
+            }
+        }
+        
+        /* Glow Effect */
+        .glow {
+            text-shadow: 0 0 10px rgba(255, 77, 148, 0.7);
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 5s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">BLACKPINK</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#members">Members</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#music">Music</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tour">Tour</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div id="particles-js"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="hero-content">
+                        <h1 class="hero-title">BLACK<span class="glow">PINK</span></h1>
+                        <p class="hero-subtitle">The Revolution of K-Pop • In Your Area</p>
+                        <p class="mb-4">The biggest girl group in the world, breaking records and making history with their unique sound and powerful performances.</p>
+                        <div class="mt-4">
+                            <a href="#music" class="btn btn-bp me-3">Best Girl Group</a>
+                            <a href="#tour" class="btn btn-outline-bp">Forever</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center" data-aos="fade-left" data-aos-delay="300">
+                    <div class="floating">
+                        <img src="https://static.wikia.nocookie.net/blinks/images/3/34/BLACKPINK_Kill_This_Love_-JP.-_Teaser_Image_2.PNG/revision/latest/scale-to-width-down/1000?cb=20190816151704" alt="BLACKPINK" class="img-fluid rounded-3 shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">About BLACKPINK</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <div class="about-content h-100">
+                        <h3 class="text-bp-pink mb-4">The Revolution</h3>
+                        <p>BLACKPINK is a South Korean girl group formed by YG Entertainment, consisting of members Jisoo, Jennie, Rosé, and Lisa.</p>
+                        <p>Debuting in August 2016 with their single album "Square One", which featured "Whistle" and "Boombayah", BLACKPINK quickly became one of the most popular K-pop groups worldwide.</p>
+                        <p>They are the highest-charting female Korean act on the Billboard Hot 100, peaking at number 13 with "Ice Cream" (with Selena Gomez), and on the Billboard 200, peaking at number two with "The Album".</p>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="about-content h-100">
+                        <h3 class="text-bp-pink mb-4">Record Breaking</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-3"><i class="fas fa-trophy text-bp-pink me-2"></i> First female K-pop group to perform at Coachella</li>
+                            <li class="mb-3"><i class="fas fa-trophy text-bp-pink me-2"></i> Most-viewed music video by a K-pop group on YouTube ("Ddu-Du Ddu-Du")</li>
+                            <li class="mb-3"><i class="fas fa-trophy text-bp-pink me-2"></i> First K-pop girl group to have two albums sell over 1 million copies</li>
+                            <li class="mb-3"><i class="fas fa-trophy text-bp-pink me-2"></i> Most-subscribed music artist on YouTube</li>
+                            <li class="mb-3"><i class="fas fa-trophy text-bp-pink me-2"></i> First Korean female group to receive a certification from the RIAA</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Members Section -->
+    <section class="members-section" id="members">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">BLACKPINK Members</h2>
+            <div class="row g-4">
+                <!-- Jisoo -->
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="member-card">
+                        <img src="https://pbs.twimg.com/media/GvbJuMqWgAAz5DQ?format=jpg&name=4096x4096" class="member-img" alt="Jisoo">
+                        <div class="member-info">
+                            <h3 class="member-name">JISOO</h3>
+                            <p class="member-role">Lead Vocalist, Visual</p>
+                            <p class="mb-0"><small>Born: January 3, 1995</small></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Jennie -->
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="member-card">
+                        <img src="https://pbs.twimg.com/media/GvbJuM1X0AAQnM8?format=jpg&name=4096x4096" class="member-img" alt="Jennie">
+                        <div class="member-info">
+                            <h3 class="member-name">JENNIE</h3>
+                            <p class="member-role">Main Rapper, Lead Vocalist</p>
+                            <p class="mb-0"><small>Born: January 16, 1996</small></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Rosé -->
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="member-card">
+                        <img src="https://pbs.twimg.com/media/GvbJuMrXIAA3g2d?format=jpg&name=4096x4096" class="member-img" alt="Rosé">
+                        <div class="member-info">
+                            <h3 class="member-name">ROSÉ</h3>
+                            <p class="member-role">Main Vocalist, Lead Dancer</p>
+                            <p class="mb-0"><small>Born: February 11, 1997</small></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lisa -->
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="member-card">
+                        <img src="https://pbs.twimg.com/media/GvbJuM0W0AAidKH?format=jpg&name=4096x4096" class="member-img" alt="Lisa">
+                        <div class="member-info">
+                            <h3 class="member-name">LISA</h3>
+                            <p class="member-role">Main Dancer, Lead Rapper, Maknae</p>
+                            <p class="mb-0"><small>Born: March 27, 1997</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Section -->
+    <section class="music-section" id="music">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Music & Albums</h2>
+            <div class="row g-4">
+                <!-- Album 1 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="album-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/BLACKPINK-_The_Album.png" class="album-img" alt="The Album">
+                        <div class="album-info">
+                            <h4 class="album-title">THE ALBUM</h4>
+                            <p class="mb-2">Released: October 2, 2020</p>
+                            <p class="mb-0">Featured tracks: How You Like That, Ice Cream, Lovesick Girls</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Album 2 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="album-card">
+                        <img src="https://media.pitchfork.com/photos/5cacd32798ed5e6aaeb25183/1:1/w_450%2Cc_limit/Blackpink_KillThisLove.jpg" class="album-img" alt="Kill This Love">
+                        <div class="album-info">
+                            <h4 class="album-title">KILL THIS LOVE</h4>
+                            <p class="mb-2">Released: April 5, 2019</p>
+                            <p class="mb-0">Featured tracks: Kill This Love, Don't Know What To Do</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Album 3 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="album-card">
+                        <img src="https://ygfamily.com/contents/images/2023/04/blackpink-album-squareup.jpg" class="album-img" alt="Square Up">
+                        <div class="album-info">
+                            <h4 class="album-title">SQUARE UP</h4>
+                            <p class="mb-2">Released: June 15, 2018</p>
+                            <p class="mb-0">Featured tracks: Ddu-Du Ddu-Du, Forever Young</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12" data-aos="fade-up">
+                    <div class="about-content">
+                        <h3 class="text-bp-pink mb-4 text-center">Latest Release</h3>
+                        <div class="row align-items-center">
+                            <div class="col-md-4 text-center" data-aos="fade-right">
+                                <img src="https://ygfamily.com/contents/images/2023/04/blackpink-album-pinkvenom.jpg" alt="Pink Venom" class="img-fluid rounded shadow">
+                            </div>
+                            <div class="col-md-8" data-aos="fade-left">
+                                <h4 class="text-white">PINK VENOM</h4>
+                                <p class="mb-3">Released: August 19, 2022</p>
+                                <p class="mb-4">The pre-release single from their second Korean studio album "BORN PINK". The song combines traditional Korean instruments with hip-hop beats, creating BLACKPINK's signature sound.</p>
+                                <a href="#" class="btn btn-bp me-2"><i class="fab fa-spotify me-2"></i>Stream Now</a>
+                                <a href="#" class="btn btn-outline-bp"><i class="fab fa-youtube me-2"></i>Watch MV</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Section -->
+    <section class="tour-section" id="tour">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">World Tour</h2>
+            <div class="row">
+                <div class="col-lg-8" data-aos="fade-right">
+                    <div class="tour-card">
+                        <h4 class="text-bp-pink">BORN PINK WORLD TOUR</h4>
+                        <p class="mb-1"><i class="fas fa-calendar me-2"></i>October 15, 2022 - June 21, 2023</p>
+                        <p class="mb-0"><i class="fas fa-globe me-2"></i>Seoul, Bangkok, Jakarta, Hong Kong, and more</p>
+                    </div>
+                    <div class="tour-card">
+                        <h4 class="text-bp-pink">IN YOUR AREA WORLD TOUR</h4>
+                        <p class="mb-1"><i class="fas fa-calendar me-2"></i>November 10, 2018 - February 22, 2020</p>
+                        <p class="mb-0"><i class="fas fa-globe me-2"></i>Bangkok, Jakarta, Hong Kong, Manila, Singapore, and more</p>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-left">
+                    <div class="about-content h-100">
+                        <h4 class="text-bp-pink mb-3">Tour Highlights</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-music text-bp-pink me-2"></i> Over 1.5 million attendees</li>
+                            <li class="mb-2"><i class="fas fa-record-vinyl text-bp-pink me-2"></i> 36 cities worldwide</li>
+                            <li class="mb-2"><i class="fas fa-users text-bp-pink me-2"></i> Largest audience: 55,000 in Bangkok</li>
+                            <li class="mb-0"><i class="fas fa-ticket-alt text-bp-pink me-2"></i> Multiple sold-out shows</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Connect With BLACKPINK</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <div class="about-content h-100 text-center">
+                        <h4 class="text-bp-pink mb-4">Official Links</h4>
+                        <div class="d-flex flex-wrap justify-content-center mb-4">
+                            <a href="https://share.google/pP7MNPKExbevZDjaH" class="social-icon"><i class="fab fa-youtube"></i></a>
+                            <a href="https://share.google/s9KOUranyyoYFZ7y6" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="https://share.google/IqNSFBBi5VlzwB9RX" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="https://share.google/2EoWRi17LcV0Fn0HE" class="social-icon"><i class="fab fa-spotify"></i></a>
+                            <a href="https://share.google/68a40fkNeEwPWb0ku" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                        <p class="mb-0">Follow BLACKPINK on their official social media accounts for the latest updates, music releases, and tour announcements.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="about-content h-100">
+                        <h4 class="text-bp-pink mb-4">BLACKPINK News</h4>
+                        <p>Subscribe to our newsletter to receive the latest news and updates about BLACKPINK directly in your inbox.</p>
+                        <form>
+                            <div class="mb-3">
+                                <input type="email" class="form-control bg-dark text-white border-dark" placeholder="Your Email">
+                            </div>
+                            <button type="submit" class="btn btn-bp">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="mb-0">BLACKPINK &copy; 2023. All Rights Reserved. | This is a fan website for demonstration purposes.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Initialize Particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#ff4d94" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#ff4d94",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                }
+            }
+        });
+    </script>
+</body>
+</html>
